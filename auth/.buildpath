@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<buildpath>
+	<buildpathentry kind="src" path="public"/>
+	<buildpathentry kind="src" path="thinkphp"/>
+	<buildpathentry kind="src" path="vendor"/>
+	<buildpathentry kind="src" path="application"/>
+	<buildpathentry kind="con" path="org.eclipse.php.core.LANGUAGE"/>
+	<buildpathentry kind="lib" path="thinkphp_5.0.19.zip"/>
+</buildpath>

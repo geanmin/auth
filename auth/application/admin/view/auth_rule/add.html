@@ -1,0 +1,91 @@
+
+{include file="public/head" /}
+
+
+
+
+
+
+
+    <div class="tpl-page-container tpl-page-header-fixed">
+
+
+      {include file="public/left" /}
+
+
+
+        <div class="tpl-content-wrapper">
+            <div class="tpl-content-page-title">
+                Amaze UI 表单
+            </div>
+            <ol class="am-breadcrumb">
+                <li><a href="#" class="am-icon-home">首页</a></li>
+                <li><a href="#">表单</a></li>
+                <li class="am-active">Amaze UI 表单</li>
+            </ol>
+            <div class="tpl-portlet-components">
+                <div class="portlet-title">
+                    <div class="caption font-green bold">
+                        <span class="am-icon-code"></span> 表单
+                    </div>
+                    <div class="tpl-portlet-input tpl-fz-ml">
+                        <div class="portlet-input input-small input-inline">
+                            <div class="input-icon right">
+                                <i class="am-icon-search"></i>
+                                <input type="text" class="form-control form-control-solid" placeholder="搜索..."> </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="tpl-block ">
+
+                    <div class="am-g tpl-amazeui-form">
+                        <div class="am-u-sm-12 am-u-md-9">
+                            <form class="am-form am-form-horizontal" method="post" action="/admin/authcreate">
+                                <div class="am-form-group">
+                                    <label for="user-name" class="am-u-sm-3 am-form-label">上级权限</label>
+                                    <div class="am-u-sm-9">
+                                    <select name="pid">
+                                        <option id="user-name" value="0">顶级权限</option>
+                                        {volist id="res" name="res"}
+                                          <option value="{$res.id}">
+                                              <?php if($res['pid']!=0){echo "|";echo str_repeat("-",$res['level']*3);}?>
+                                              {$res.name}
+                                          </option>
+                                        {/volist}
+                                    </select>
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="user-phone" class="am-u-sm-3 am-form-label">权限名称</label>
+                                    <div class="am-u-sm-9">
+                                        <input type="text" id="user-phone" name="name" placeholder="权限名称">
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="user-QQ" class="am-u-sm-3 am-form-label">控/方</label>
+                                    <div class="am-u-sm-9">
+                                        <input type="text" id="user-QQ" name="title" placeholder="控/方">
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <div class="am-u-sm-9 am-u-sm-push-3">
+                                        <button type="submit" class="am-btn am-btn-primary">保存修改</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    {include file="public/footer" /}
