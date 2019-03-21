@@ -4,6 +4,7 @@ namespace app\admin\controller;
 
 use think\Controller;
 use think\Request;
+use app\admin\model\Index as IndexAdmin;
 
 class Login extends Controller
 {
@@ -88,5 +89,30 @@ class Login extends Controller
     public function login()
     {
         return view();
+    }
+    /**
+     * 登录验证
+     */
+    public function checkLogin(Request $request)
+    {
+        $params = $request->param();
+        //var_dump($params);exit();
+        $captcha = $params["captcha"];
+        $yanzhengma = $this->check_verify($captcha);
+        if($yanzhengma==2){
+            $this->error("验证码错误!");
+        }
+        $index = new IndexAdmin();
+        $code =  $index->Verification($params);
+        if($code!=3){
+            $this->error("用户名或密码错误!");
+        }
+        $this->success("登录成功","admin/Index/index");
+    }
+    function check_verify($code){
+        if(!captcha_check($code)){
+            return 2;
+        };
+        return 1;
     }
 }

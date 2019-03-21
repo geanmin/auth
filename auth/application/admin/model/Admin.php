@@ -11,10 +11,10 @@ class Admin extends Model
     /**
      *  登录密码检查
      *  $data 传递数据
-     *  $num 返回的类型 
+     *  $num 返回的类型
      *  return true
      * */
-	public function  LoginCheck($data='') 
+	public function  LoginCheck($data='')
 	{
 		$num = 0;
 		if($data==''){
@@ -36,5 +36,27 @@ class Admin extends Model
 			}
 		}
 		//dump($data);
+	}
+	/**
+	 * 管理员信息添加
+	 */
+	public function add($param)
+	{
+		$user           = new Admin;
+		$user->name  = $param["username"];
+		$user->password  = md5($param["pass"]);
+		$user->save();
+		 if($user){
+			$id =  $user->id;
+			 //同时记录权限表
+			 $test["uid"] = $id;
+			 $test["group_id"] = $param["authgroup"];
+			 $uid = Db::name("auth_group_access")->insert($test);
+			 if($uid){
+				 return 1;
+			 }
+			 return 2;
+		 }
+		 return 2;
 	}
 }

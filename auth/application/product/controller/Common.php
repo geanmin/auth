@@ -1,13 +1,11 @@
 <?php
 
-namespace app\admin\controller;
+namespace app\product\controller;
 
 use think\Controller;
 use think\Request;
-use think\Db;
-use app\admin\model\Admin as AdminModel;
 
-class Admin extends Common
+class Common extends Controller
 {
     /**
      * 显示资源列表
@@ -16,9 +14,7 @@ class Admin extends Common
      */
     public function index()
     {
-        $list = Db::name("admin")->order("id","desc")->select();
-        $this->assign("list",$list);
-        return view();
+        //
     }
 
     /**
@@ -26,25 +22,9 @@ class Admin extends Common
      *
      * @return \think\Response
      */
-    public function add(Request $request)
+    public function create()
     {
-      if($request->isPost()){
-         $param = $request->param();
-          if(!$param){
-              $this->error("请输入参数");
-          }
-          $admin = new AdminModel();
-          $code = $admin->add($param);
-          if($code == 1){
-              $this->success("添加成功!","admin/Admin/index");
-          }
-              $this->error("添加失败");
-       }else{
-          $authgroup = Db::name("auth_group")->where("status",1)->select();
-          $this->assign("authgroup",$authgroup);
-          return view();
-      }
-
+        //
     }
 
     /**
@@ -75,17 +55,9 @@ class Admin extends Common
      * @param  int  $id
      * @return \think\Response
      */
-    public function edit(Request $request)
+    public function edit($id)
     {
-        if($request->isPost()){
-
-        }else{
-            $id = $request->param("id");
-            $list = Db::name("admin")->where("id",$id)->find();
-            $this->assign("list",$list);
-            return view();
-        }
-
+        //
     }
 
     /**

@@ -42,17 +42,17 @@
 
                     <div class="am-g tpl-amazeui-form">
                         <div class="am-u-sm-12 am-u-md-9">
-                            <form class="am-form am-form-horizontal" method="post" action="/admin/auth_rule/edit">
-                                <input value="{$list['id']}" name="id" type="hidden"/>
+                            <form class="am-form am-form-horizontal" method="post" action="admin/AuthRule/edit">
+                                <input value="{$list['id']}" name="uid" type="hidden"/>
                                 <div class="am-form-group">
                                     <label for="user-name" class="am-u-sm-3 am-form-label">上级权限</label>
                                     <div class="am-u-sm-9">
                                     <select name="pid">
                                         <option id="user-name" value="0">顶级权限</option>
-                                        {volist id="info" name="info"}
-                                          <option  {if condition = "$info['id'] eq $list['id']"} selected {/if} value="{$info.id}">
-                                              <?php if($info['pid']!=0){echo "|";echo str_repeat("-",$info['level']*3);}?>
-                                              {$info.name}
+                                        {volist id="res" name="res"}
+                                          <option  {if condition = "$list['pid'] eq $res['id']"} selected {/if} value="{$res.id}">
+                                              <?php if($res['pid']!=0){echo "|";echo str_repeat("-",$res['level']*3);}?>
+                                              {$res.name}
                                           </option>
                                         {/volist}
                                     </select>

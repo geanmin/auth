@@ -8,7 +8,7 @@ class Index extends Model
 {
     public function Verification($params)
     {
-       $admin = Db::name("tp_admin")->where("name",$params["username"])->find();
+       $admin = Db::name("admin")->where("name",$params["username"])->find();
        if(!$admin){
            return 1;
        }

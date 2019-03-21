@@ -1,0 +1,271 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Amaze UI Admin index Examples</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="/static/admin/assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="/static/admin/assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="/static/admin/assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/static/admin/assets/css/admin.css">
+    <link rel="stylesheet" href="/static/admin/assets/css/app.css">
+    <link rel="stylesheet" href="/static/admin/productcat/input.css"/>
+    <link rel="stylesheet" href="/static/layui/css/layui.css"/>
+    <script src="/static/layui/layui.js"></script>
+    <script src="/static/admin/assets/js/echarts.min.js"></script>
+
+</head>
+
+<body data-type="index">
+
+
+<header class="am-topbar am-topbar-inverse admin-header">
+    <div class="am-topbar-brand">
+        <a href="javascript:;" class="tpl-logo">
+            <img src="/static/admin/assets/img/logo.png" alt="">
+        </a>
+    </div>
+    <div class="am-icon-list tpl-header-nav-hover-ico am-fl am-margin-right">
+
+    </div>
+
+    <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+
+    <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+
+        <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list tpl-header-list">
+            <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
+                <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:;">
+                    <span class="tpl-header-list-user-nick">禁言小张</span><span class="tpl-header-list-user-ico"> <img src="/static/admin/assets/img/user01.png"></span>
+                </a>
+                <ul class="am-dropdown-content">
+                    <li><a href="admin/loginout"><span class="am-icon-power-off"></span> 退出</a></li>
+                </ul>
+            </li>
+            <li><a href="loginout" class="tpl-header-list-link"><span class="am-icon-sign-out tpl-header-list-ico-out-size"></span></a></li>
+        </ul>
+    </div>
+</header>
+
+<div class="tpl-page-container tpl-page-header-fixed">
+    {include file="public/left" /}
+    <div class="tpl-content-wrapper">
+        <ol class="am-breadcrumb">
+            <li><a href="#" class="am-icon-home">商品首页</a></li>
+            <li><a href="#">表单</a></li>
+            <li class="am-active">Amaze UI 表单</li>
+        </ol>
+        <div class="tpl-portlet-components">
+            <div class="tpl-block ">
+                <div class="am-g tpl-amazeui-form">
+                    <div class="am-u-sm-12 am-u-md-9">
+                        <form class="am-form am-form-horizontal" method="post" action="{:url('admin/AuthGroup/add')}">
+                            <table id="TableList" width="100%" class="tbmodify tbmodify-mulcols" border="0" cellspacing="0" cellpadding="0" style="position: relative;">
+                            <tbody>
+                                <tr>
+                                    <td class="tdtitle">
+                                        <span class="red">*</span>商品名称：
+                                    </td>
+                                    <td colspan="5">
+                                        <input name="txtName" type="text" maxlength="100" id="txtName" class="txt350" onfocus="doClick()">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tdtitle">
+                                        <span class="red">*</span>关键字：
+                                    </td>
+                                    <td colspan="5">
+                                        <input name="txtKeyword" type="text" maxlength="100" id="txtKeyword"
+                                               class="txt350" value="">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tdtitle">
+                                        商品副标题：
+                                    </td>
+                                    <td colspan="5">
+                                        <textarea name="txtProductSecondName" rows="2" cols="20"
+                                                  id="txtProductSecondName" class="textarea" only="1"
+                                                  style="height:80px;width:70%;"></textarea><br>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tdtitle">
+                                        商品编号：
+                                    </td>
+                                    <td colspan="5">
+                                        <input name="txtspNo" type="text" maxlength="50" id="txtspNo" class="txt350">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tdtitle">
+                                        <span class="red">*</span>商品分类：
+                                    </td>
+                                    <td colspan="5">
+                                            <input type="checkbox" name="ddlClass[]" style="width:50px;"/> &nbsp;
+                                            <span class="newClass">(如果没有请点击这里添加)</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tdtitle" width="90">
+                                        <span class="red">*</span>本店售价：
+                                    </td>
+                                    <td width="150">
+                                        <input name="txtShopPrice" type="text" maxlength="8" id="txtShopPrice" class="txt100">
+                                    </td>
+                                    <td class="tdtitle" width="90">
+                                        市场售价：
+                                    </td>
+                                    <td width="150">
+                                        <input name="txtMarketPrice" type="text" maxlength="8" id="txtMarketPrice" class="txt100">
+                                    </td>
+                                    <td class="tdtitle" width="90">
+                                        成本价格：
+                                    </td>
+                                    <td width="120">
+                                        <input name="txtCostPrice" type="text" maxlength="8" id="txtCostPrice" class="txt100" /><span class="gray">后台使用</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tdtitle">
+                                        商品排序：
+                                    </td>
+                                    <td>
+                                        <input name="txtOrder" type="text" value="" maxlength="7" id="txtOrder" class="txt100"/>
+                                        <span class="gray">越大越靠前</span>
+                                    </td>
+                                    <td class="tdtitle">
+                                        商品重量：
+                                    </td>
+                                    <td>
+                                        <input name="txtWeight" type="text" value="" maxlength="7" id="txtWeight" class="txt100"/>
+                                        <span class="gray">千克</span>
+                                    </td>
+                                    <td class="tdtitle">
+                                        计量单位：
+                                    </td>
+                                    <td>
+                                        <input name="txtWeightUnit" type="text" value="" maxlength="10" id="txtWeightUnit" class="txt100"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tdtitle">
+                                        库存数量：
+                                    </td>
+                                    <td>
+                                        <input name="txtStock" type="text" value="" maxlength="7" id="txtStock" class="txt100"/>
+                                    </td>
+                                    <td class="tdtitle">
+                                        库存预警：
+                                    </td>
+                                    <td>
+                                        <input name="txtWarnStock" type="text" value="" maxlength="7" id="txtWarnStock" class="txt100"/>
+                                    </td>
+                                    <td class="tdtitle">
+                                        赠送积分：
+                                    </td>
+                                    <td>
+                                        <input name="txtJiFen" type="text" maxlength="7" id="txtJiFen" class="txt100"/>
+                                    </td>
+                                </tr>
+                                <!--增加一个最小购买数量 begin-->
+                                <tr>
+                                    <td class="tdtitle">
+                                        最小购买：
+                                    </td>
+                                    <td>
+                                        <input name="txtMinBuyAmount" type="text" value="" maxlength="7" id="txtMinBuyAmount" class="txt100"/>
+                                        <span class="gray">0表示不限制</span>
+                                    </td>
+                                    <td class="tdtitle">
+                                        最大购买：
+                                    </td>
+                                    <td colspan="1">
+                                        <input name="txtMaxBuyAmount" type="text" value="" maxlength="7" id="txtMaxBuyAmount" class="txt100"/>
+                                        <span class="gray">0表示不限制</span>
+                                    </td>
+                                    <td class="tdtitle">
+                                        销量：
+                                    </td>
+                                    <td colspan="0">
+                                        <input name="salecount" type="text" maxlength="5" id="salecount" class="txt100"/>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tdtitle">
+                                        是否推荐：
+                                    </td>
+                                    <td>
+                                        <input id="cbIsHot" type="checkbox" name="cbIsHot" value="on">热销
+                                        <input id="cbOnCatalogNew" type="checkbox" name="cbOnCatalogNew" value="on">新品
+                                        <input id="cbOnCatalogPromotion" type="checkbox" name="cbOnCatalogPromotion"
+                                               value="on">特价
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tdtitle">
+                                        是否上架：
+                                    </td>
+                                    <td>
+                                        <input id="cbOnSale" type="checkbox" name="cbOnSale" value="on">
+                                    </td>
+                                    <td class="tdtitle">
+                                        上架时间：
+                                    </td>
+                                    <td colspan="3">
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tdtitle">&nbsp;
+
+                                    </td>
+                                    <td colspan="5">
+                                        <input type="hidden" name="classinfo" id="classinfo" value="">
+                                        <input type="button" name="btnEnter" value=" 确 定 " id="btnEnter"
+                                               class="btn btn_submit">&nbsp;
+                                        <input type="button" name="btnCancel" value=" 取 消 " id="btnCancel"
+                                               onclick="history.back(-1);" class="btn btn_cannel">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </form>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    </div>
+    <script src="/static/admin/assets/style/jquery_002.js"></script>
+    <script src="/static/admin/assets/style/bootstrap.js"></script>
+    <script src="/static/admin/assets/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="/static/admin/assets/style/beyond.js"></script>
+
+    <script src="/static/admin/assets/js/jquery.min.js"></script>
+    <script src="/static/admin/assets/js/amazeui.min.js"></script>
+    <script src="/static/admin/assets/js/iscroll.js"></script>
+    <script src="/static/admin/assets/js/app.js"></script>
+    <script>
+        function doClick(){
+            layui.use('layer', function(){
+                var layer = layui.layer;
+
+                layer.msg('hello',{time:30});
+            });
+        }
+    </script>
+    </body>
+
+    </html>

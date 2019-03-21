@@ -15,6 +15,7 @@ class Index extends Common
     public function login(Request $request)
     {
         $params = $request->param();
+        var_dump($params);exit();
         $captcha = $params["captcha"];
         $yanzhengma = $this->check_verify($captcha);
         if($yanzhengma==2){

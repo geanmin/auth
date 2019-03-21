@@ -42,13 +42,22 @@
                         <div class="am-u-sm-12 am-u-md-9">
                             <form class="am-form am-form-horizontal" method="post" action="{:url('admin/Admin/add')}">
                                 <div class="am-form-group">
+                                    <label for="user-name" class="am-u-sm-3 am-form-label">所属用户组</label>
+                                    <div class="am-u-sm-9">
+                                        <select name="authgroup">
+                                        {volist name="authgroup" id="authgroup"}
+                                        <option id="user-weibo" placeholder="所属用户名"  value="{$authgroup['id']}">{$authgroup['title']}</option>
+                                        {/volist}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
                                     <label for="user-name" class="am-u-sm-3 am-form-label">用户名</label>
                                     <div class="am-u-sm-9">
                                         <input type="text" id="user-name" placeholder="用户名" name="username">
                                         <small></small>
                                     </div>
                                 </div>
-
                                 <div class="am-form-group">
                                     <label for="user-phone" class="am-u-sm-3 am-form-label"> 密码 </label>
                                     <div class="am-u-sm-9">
@@ -57,15 +66,8 @@
                                 </div>
 
                                 <div class="am-form-group">
-                                    <label for="user-weibo" class="am-u-sm-3 am-form-label">请确认密码</label>
-                                    <div class="am-u-sm-9">
-                                        <input type="password" id="user-weibo" placeholder="请确认密码" name="npass">
-                                    </div>
-                                </div>
-
-                                <div class="am-form-group">
                                     <div class="am-u-sm-9 am-u-sm-push-3">
-                                        <button type="button" class="am-btn am-btn-primary">保存修改</button>
+                                        <button type="submit" class="am-btn am-btn-primary">保存修改</button>
                                     </div>
                                 </div>
                             </form>

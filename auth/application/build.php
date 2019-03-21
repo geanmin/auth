@@ -29,4 +29,12 @@ return [
         'model'      => ['User', 'UserType'],
         'view'       => ['index/index'],
     ],
+    // 其他更多的模块定义
+    'product'     => [
+        '__file__'   => ['common.php'],
+        '__dir__'    => ['behavior', 'controller', 'model', 'view'],
+        'controller' => ['Index'],
+        'model'      => ['Index'],
+        'view'       => ['index/index'],
+    ],
 ];
